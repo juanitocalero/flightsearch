@@ -30,6 +30,7 @@ The project has some Unit Tests implemented with JUnit, and acceptance tests wri
 
 The project is linked to travis-ci to automate testing runs.
 
+
 ## Design considerations
 - Maybe all the CSV reading and Catalog concept is a little bit "overkill" for the problem at hand, but it has been implemented like that to isolate the main module from the data source (which is likely to change)
 and to show up different programming techniques (interfaces, generics, etc...). 
