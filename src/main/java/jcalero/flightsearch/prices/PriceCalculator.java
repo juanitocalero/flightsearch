@@ -54,8 +54,7 @@ public class PriceCalculator {
 	private BigDecimal adjustDepartureDate(BigDecimal currentPrice, ZonedDateTime flightDate) 
 			throws PriceCalculationException {
 		// Get the difference in days from current date to date of departure
-		// We add 1 unit, because between method makes second parameter exclusive 
-		long daysBetween = ChronoUnit.DAYS.between(timeProvider.getCurrentTime(), flightDate) + 1;
+		long daysBetween = ChronoUnit.DAYS.between(timeProvider.getCurrentTime(), flightDate);
 		
 		if (daysBetween >= 31)
 			return currentPrice.multiply(BigDecimal.valueOf(0.8));

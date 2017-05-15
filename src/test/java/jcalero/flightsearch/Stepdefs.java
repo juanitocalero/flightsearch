@@ -39,8 +39,14 @@ public class Stepdefs {
 	@When("^I search for (\\d+) adults?, (\\d+) child(?:ren)?, (\\d+) infants?, (\\d+) days? to the departure date, flying (.+) -> (.+)$")
 	public void setTerms(int numAdults, int numChilds, int numInfants, int daysToDeparture, 
 			String origin, String destination) {
-		searchTerms = new SearchTerms(origin, destination, 
-				ZonedDateTime.now().plus(daysToDeparture, ChronoUnit.DAYS), 
+		
+		//We set the search date summing days to departure to current date.
+		// We add 12 hours to avoid setting the flight exactly in the limit of complete days,
+		// which can lead to unexpected differences in tests.
+		ZonedDateTime searchDate = ZonedDateTime.now()
+				.plus(daysToDeparture, ChronoUnit.DAYS).plus(12, ChronoUnit.HOURS);
+		
+		searchTerms = new SearchTerms(origin, destination, searchDate, 
 				new Passengers(numAdults, numChilds, numInfants));
 	}
 	
