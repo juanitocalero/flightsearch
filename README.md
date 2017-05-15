@@ -10,7 +10,7 @@ data, fill a SearchTerms object, and call `SearchEngine.search()` passing the `S
 
 ```java
 
-FlightsData flightsData = new CsvFlightsData(this.getClass().getResource("/flights.csv"))7;
+FlightsData flightsData = new CsvFlightsData(this.getClass().getResource("/flights.csv"));
 AirportsCatalog airportsCatalog = new CsvAirportsCatalog(this.getClass().getResource("/airports.csv"));
 AirlinesCatalog airlinesCatalog = new CsvAirlinesCatalog(this.getClass().getResource("/airlines.csv"));
 		

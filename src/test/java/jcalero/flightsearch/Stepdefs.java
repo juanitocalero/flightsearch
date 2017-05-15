@@ -70,7 +70,9 @@ public class Stepdefs {
 			BigDecimal expectedPrice = new BigDecimal(new Scanner(expectedFlight.get(1)).next());
 			// To compare BigDecimals we should use compareTo!
 			// http://docs.oracle.com/javase/6/docs/api/java/math/BigDecimal.html#equals%28java.lang.Object%29
-			assertTrue(expectedPrice.compareTo(foundFlight.finalPrice()) == 0);
+			// assertTrue(expectedPrice.compareTo(foundFlight.finalPrice()) == 0);
+			// TODO: Use Hamcrest?
+			assertComparable(expectedPrice, foundFlight.finalPrice());
 		}
 	}
 	
@@ -89,5 +91,10 @@ public class Stepdefs {
 		}
 		return null;
 		
+	}
+	
+	private static<T extends Comparable<T>> void assertComparable(T a, T b) {
+	    String msg = "Objects were not equals: <" + a + ">, <" + b + ">";
+	    assertEquals(msg, 0, a.compareTo(b));
 	}
 }
